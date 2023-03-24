@@ -1,10 +1,9 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class SaveCounter {
-    public static void saveCounter(int counter) {
-        try (FileWriter fw = new FileWriter("exemple.txt")) {
-            fw.append(String.valueOf(counter));
+    static void save(int saveCounter) {
+        try (ObjectOutputStream objOStr = new ObjectOutputStream(new FileOutputStream(CounterService.getFileName()))) {
+            objOStr.writeInt(saveCounter);
         } catch (IOException e) {
             e.printStackTrace();
         }
