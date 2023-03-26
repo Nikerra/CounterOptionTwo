@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.ObjectInputStream;
+import java.util.Optional;
 
 public class IsFileExists {
     private static int counter;
@@ -14,6 +16,10 @@ public class IsFileExists {
             counter = new LoadCounter().load();
         }
         return counter;
+//        return Optional.ofNullable(new File(new CounterService().getFileName()))
+//                .filter(File::exists)
+//                .map(f->new LoadCounter().load())
+//                .orElse(0);
     }
 
 }
