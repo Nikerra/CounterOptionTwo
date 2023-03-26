@@ -12,15 +12,15 @@ public class CounterService {
     private static String command = "";
 
 
-    public static String getFileName() {
+    public  String getFileName() {
         return fileName;
     }
 
 
     //  Работа счетчика
-    public static int work() {
+    protected int work() {
 
-        counter =  IsFileExists.fileExists();//вызов метода для проверки наличия файла и получения состояния счетчика
+        counter =  new IsFileExists().fileExists();//вызов метода для проверки наличия файла и получения состояния счетчика
         System.out.println("Счетчик загружен, значение \'" + counter + "\'");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 // Запускаем цикл и ждем команду
@@ -46,7 +46,7 @@ public class CounterService {
                 case STOP -> {
                     print();
                     System.out.println("\"Завершаю работу\"");
-                    SaveCounter.save(counter);
+                    new SaveCounter().save(counter);
                     flag = false;
                 }
                 case RESET -> {
@@ -59,6 +59,6 @@ public class CounterService {
         }
         return counter;
     }
-    private static void print(){System.out.println("Текущее состояние счетчика \'" + counter + "\'");}
+    private  void print(){System.out.println("Текущее состояние счетчика \'" + counter + "\'");}
 
 }
