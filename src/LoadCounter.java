@@ -5,11 +5,10 @@ public class LoadCounter {
 
     protected Integer load() {
         try(ObjectInputStream objIstr = new ObjectInputStream(new FileInputStream(new CounterService().getFileName()))) {
-            counter = objIstr.readInt();
+            return objIstr.readInt();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return counter;
     }
 
 }

@@ -6,20 +6,17 @@ public class CounterService {
     private final static String INC = "/inc";
     private final static String STOP = "/stop";
     private final static String RESET = "/reset";
-    private static String fileName = "serial";
+    private static String FILE_NAME = "serial";
     private static int counter;
     private static boolean flag = true;
     private static String command = "";
-
-
     public  String getFileName() {
-        return fileName;
+        return FILE_NAME;
     }
 
 
     //  Работа счетчика
-    protected int work() {
-
+    protected void work() {
         counter =  new IsFileExists().fileExists();//вызов метода для проверки наличия файла и получения состояния счетчика
         System.out.println("Счетчик загружен, значение \'" + counter + "\'");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -57,7 +54,6 @@ public class CounterService {
 
             }
         }
-        return counter;
     }
     private  void print(){System.out.println("Текущее состояние счетчика \'" + counter + "\'");}
 
